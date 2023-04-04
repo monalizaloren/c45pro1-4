@@ -127,8 +127,10 @@ class Game {
 
         }
       }
+      /*Programe que...
+      se o jogador estiver movendo, mude a posição no eixo y automaticamente para 5*/
       if (this.playerMoving) {
-        player.positionY += 5;
+        player.positionY += ???;
         player.update();
       }
 
@@ -163,19 +165,24 @@ class Game {
   }
 
   handleFuel(index) {
-    // Adicione o combustível
+    
     cars[index - 1].overlap(fuels, function(collector, collected) {
       player.fuel = 185;
-      //collected (coletado) é o sprite no grupo de colecionáveis que desencadeia
-      //o evento
+      
       collected.remove();
     });
-    if (player.fuel > 0 && this.playerMoving) {
-      player.fuel -= 0.3;
+    /*Programe que..
+    Se o combustivel do jogador for maior que 0 e ele estiver movendo
+    reduza o combustivel em 0.3 */
+    if (player.fuel > ??? && this.playerMoving) {
+     ??? -= 0.3;
     }
 
-    if (player.fuel <= 0) {
-      gameState = 2;
+    /*Programe que...
+    Se o combustivel do jogador for menor ou igual a 0
+    o estado do jogo será 2 */
+    if (player.fuel <= ???) {
+      ??? = 2;
       this.gameOver();
     }
   }
@@ -184,8 +191,7 @@ class Game {
     cars[index - 1].overlap(powerCoins, function(collector, collected) {
       player.score += 21;
       player.update();
-      //collected (coletado) é o sprite no grupo de colecionáveis que desencadeia
-      //o evento
+      
       collected.remove();
     });
   }
@@ -203,11 +209,17 @@ handleResetButton() {
 
 showLife() {
   push();
-  image(lifeImage, width / 2 - 130, height - player.positionY - 400, 20, 20);
-  fill("white");
+  /*A imagem do coração é posicionada horizontalmente na metade da largura da tela,
+   menos 130 pixels, e verticalmente na altura da tela, menos a posição vertical do jogador, 
+   menos 400 pixels. A imagem tem uma largura e altura de 20 pixels. */
+   /* Essa imagem se chama 'lifeImage', adicione ela abaixo: */
+  ???(???, width / 2 - 130, height - player.positionY - 400, 20, 20);
+  /* Defina a cor branco para ser a cor de preenchimento do retângulo */
+  fill("???");
   rect(width / 2 - 100, height - player.positionY - 400, 185, 20);
   fill("#f50057");
-  rect(width / 2 - 100, height - player.positionY - 400, player.life, 20);
+  //Utilize o método que cria um retângulo
+  ???(width / 2 - 100, height - player.positionY - 400, player.life, 20);
   noStroke();
   pop();
 }
@@ -273,7 +285,9 @@ handlePlayerControls() {
   }
 }
 showRank() {
-  swal({
+  /*Utilize 'swal', swal permite exibir mensagens de alerta, confirmação e aviso ao usuário de forma 
+  personalizada, com opções como animações, ícones, títulos e botões personalizados.  */
+  ???({
     title: `Incrível!${"\n"}Rank${"\n"}${player.rank}`,
     text: "Você alcançou a linha de chegada com sucesso",
     imageUrl:
@@ -282,7 +296,7 @@ showRank() {
     confirmButtonText: "Ok"
   });}
   gameOver() {
-    swal({
+    ???({
       title: `Fim de Jogo`,
       text: "Ops, você perdeu a corrida....!!!",
       imageUrl:
